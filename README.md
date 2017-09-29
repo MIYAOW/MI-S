@@ -1,8 +1,8 @@
-# [MI](https://github.com/MIYAOW/MI)
+# [MI-S](https://github.com/MIYAOW/MI-S)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://blog.csdn.net/fjnpysh)
-[![GitHub stars](https://img.shields.io/github/stars/MIYAOW/MI.svg?style=social&label=Stars)](https://github.com/MIYAOW/MI-S)
-[![GitHub forks](https://img.shields.io/github/forks/MIYAOW/MI.svg?style=social&label=Fork)](https://github.com/MIYAOW/MI-S)
+[![GitHub stars](https://img.shields.io/github/stars/MIYAOW/MI-S.svg?style=social&label=Stars)](https://github.com/MIYAOW/MI-S)
+[![GitHub forks](https://img.shields.io/github/forks/MIYAOW/MI-S.svg?style=social&label=Fork)](https://github.com/MIYAOW/MI-S)
 
 ![logo](.project-resouce/MILOGO-120x120.png)
 
@@ -10,18 +10,18 @@
 
 ## 作者前言
 
-   希望大家一起共同研究。更多的解决方法。 联系方式见点击上边的License即可。
-   由于本人非技术大牛，业余时间较少。但是保证不定期更新。若有较好的意见或者建议提问到ISSUES
+   本人非技术大牛，业余时间较少。但是保证不定期更新。若有较好的意见或者建议提问到ISSUES，联系方式见点击上边的License即可。
 
 ## 项目规划
 
-   `MI`微型系统项目于2017年4月1日按照企业习惯归纳总结出自己一套企业级架构，并仅仅只是架构，它是一种理念，正在成长中.....
+   `MI`微型系统项目于2017年4月1日按照自主研发习惯归纳总结出一套企业级架构，并仅仅只是架构，它是一种理念，宛若一个大树，
+   正在成长中.....
 
 ## 项目介绍
 
-　　基于 **Spring Boot** + **Spring Cloud** + **Mybatis-Plus** 为主流框架搭建的分布式敏捷开发系统架构，为中、小型项目打造企业级基础开发解决方案。
+　　基于 **Spring Boot** + **Spring Cloud** + **Mybatis** 为主流框架搭建的分布式敏捷开发系统架构，为中、小型项目打造企业级基础开发多种解决方案。
 
-#### 项目结构图解
+#### 项目结构图解（打勾表示案例可用）
 
 ![结构图解](.project-resouce/MI-PRO-O.png)
 
@@ -30,6 +30,11 @@
 > mi-common
 
 框架公共模块，提供相关共用工具类，以及代码生成器，基础配置参数，静态变量等,可**演变成公司专用工具类自行维护**。
+
+> mi-blog [查看部署](https://github.com/MIYAOW/MI-S)
+
+技术博客项目（使用HEXO主题模版，仿DD样式）
+
 
 > mi-config
 
@@ -41,11 +46,8 @@
 
 > mi-admin
 
-平台总管理，提供模块运行环境、日志等监控。以及总平台管理中心功能。（待设计中）
+平台总管理，以及总平台管理中心功能。
 
-> mi-blog
-
-技术博客项目（使用HEXO主题模版，仿DD样式）
 
 
 ## 技术选型
@@ -96,8 +98,6 @@ Lombok | 代码消除冗长 | [https://projectlombok.org/](https://projectlombok
 - **Jdk 8**
 - **Redis**
 - **Mysql5.5 ↑**
-
-
 
 ## 项目案例图示
 
