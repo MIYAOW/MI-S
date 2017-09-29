@@ -1,8 +1,8 @@
 # [MI](https://github.com/MIYAOW/MI)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://blog.csdn.net/fjnpysh)
-[![GitHub stars](https://img.shields.io/github/stars/MIYAOW/MI.svg?style=social&label=Stars)](https://github.com/MIYAOW/MI)
-[![GitHub forks](https://img.shields.io/github/forks/MIYAOW/MI.svg?style=social&label=Fork)](https://github.com/MIYAOW/MI)
+[![GitHub stars](https://img.shields.io/github/stars/MIYAOW/MI.svg?style=social&label=Stars)](https://github.com/MIYAOW/MI-S)
+[![GitHub forks](https://img.shields.io/github/forks/MIYAOW/MI.svg?style=social&label=Fork)](https://github.com/MIYAOW/MI-S)
 
 ![logo](.project-resouce/MILOGO-120x120.png)
 
