@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+    <head>
+        <meta charset="utf-8" />
+        <title>编辑文章</title>
+        <link href="/admin/css/bootstrap.min.css"  rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+        <!-- Data Tables -->
+        <link href="/admin/css/plugins/dataTables/dataTables.bootstrap.css"  rel="stylesheet">
+        <link href="/admin/css/animate.css" rel="stylesheet">
+        <link href="/admin/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="/admin/css/article-add.css" />
+        <link rel="stylesheet" href="/admin/css/editormd.css" />
+        <link href="/admin/css/plugins/chosen/chosen.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/admin/js/flavr/flavr/css/animate.css" />
+        <link rel="stylesheet" type="text/css" href="/admin/js/flavr/flavr/css/flavr.css" />
+    </head>
+    <body>
+        <div id="layoutitle-controlt">
+            <input id="articleId" th:value="${article.articleId}" hidden />
+            <!--编辑框-->
+            <div id="article-editormd">
+                <textarea style="display:none;" th:text="${article.content}"></textarea>
+            </div>
+        </div>
+
+
+        <!-- 编辑页面 -->
+        <div class="modal inmodal" id="editArticleModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div id="editArticleContent" class="modal-body">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 新增页面 -->
+        <div class="modal inmodal" id="addArticleModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div id="addArticleContent" class="modal-body">
+
+                </div>
+            </div>
+        </div>
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/admin/js/bootstrap.min.js"></script>
+        <script src="/admin/js/editormd.js"></script>
+        <script src="/admin/js/jquery.form.js"></script>
+        <script src="/admin/js/plugins/chosen/chosen.jquery.js"></script>
+        <script src="/admin/js/article/edit_article.js"></script>
+        <script src="/admin/js/validation.js"></script>
+        <script type="text/javascript" src="/admin/js/flavr/flavr/js/flavr.min.js"></script>
+        <script type="text/javascript" src="/admin/js/flavr/base.js"></script>
+    </body>
+</html>

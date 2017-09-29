@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mi.module.blog.mapper.TagMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.mi.module.blog.entity.Tag">
+		<id column="tag_id" property="tagId" />
+		<result column="tag_name" property="tagName" />
+		<result column="alias_name" property="aliasName" />
+		<result column="sort" property="sort" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+	<select id="load" resultMap="BaseResultMap">
+		select * from blog_tag
+		<if test="param != null and param != ''">
+			where tag_name like concat('%',#{param},'%') or alias_name like concat('%',#{param},'%')
+		</if>
+		limit #{pager.start},#{pager.limit}
+	</select>
+
+	<select id="checkExist" resultType="int">
+		select count(tag_id) from blog_tag where (tag_name=#{tagName} or alias_name = #{aliasName})
+		<if test="tagId != null and tagId != ''">
+			and tag_id != #{tagId}
+		</if>
+	</select>
+
+</mapper>

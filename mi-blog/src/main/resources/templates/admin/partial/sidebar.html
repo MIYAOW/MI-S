@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<body>
+<div class="sidebar-collapse" th:fragment="sidebar">
+    <ul class="nav" id="side-menu">
+        <li class="nav-header">
+            <div class="dropdown profile-element">
+                <span>
+                    <img alt="image" class="img-circle" th:src="${userInfo.avatarUrl}"/>
+                </span>
+                <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0)">
+                    <span class="clear">
+                        <span class="block m-t-xs">
+                            <strong class="font-bold">[[${userInfo.nickName}]]</strong>
+                        </span>
+                        <span class="text-muted text-xs block">
+                                超级管理员
+                        <b class="caret"></b></span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                    <li><a id="update-password">修改密码</a></li>
+                    <li><a id="update-avatar">修改头像</a></li>
+                    <li><a id="update-userinfo">个人资料</a></li>
+                    <!--<li><a id="update-connect">联系我们</a></li>-->
+                    <!--<li><a href="#">信箱</a></li>-->
+                    <li class="divider"></li>
+                    <li><a href="/admin/loginOut">安全退出</a></li>
+                </ul>
+            </div>
+            <div class="logo-element">
+                H+
+            </div>
+        </li>
+
+        <!--<li id="category-manage-li">-->
+        <!--<a href="javascript:void(0)"><i class="fa fa fa-qrcode"></i>-->
+        <!--<span class="nav-label">分类管理</span>-->
+        <!--<span class="fa arrow"></span>-->
+        <!--</a>-->
+        <!--<ul class="nav nav-second-level">-->
+
+        <!--</ul>-->
+        <!--</li>-->
+
+        <li id="partner-manage-li">
+            <a href="javascript:void(0)">
+                <i class="fa fa-link"></i>
+                <span class="nav-label">链接管理</span>
+                <span class="fa arrow"></span>
+            </a>
+            <ul class="nav nav-second-level">
+                <li id="partner-list-li">
+                    <a class="fa fa-hand-o-right" href="/admin/flink/mgr" target="mainFrame"> 链接列表</a>
+                </li>
+            </ul>
+        </li>
+
+        <li id="label-manage-li">
+            <a href="javascript:void(0)">
+                <i class="fa fa fa-pencil-square-o"></i>
+                <span class="nav-label">文章管理</span>
+                <span class="fa arrow"></span>
+            </a>
+            <ul class="nav nav-second-level">
+                <li id="category-list-li">
+                    <a class="fa fa fa-folder" href="/admin/type/mgr" target="mainFrame"> 分类列表</a>
+                </li>
+                <li id="label-list-li">
+                    <a class="fa fa fa-tag" href="/admin/tag/mgr" target="mainFrame"> 标签列表</a>
+                </li>
+                <li id="article-list-li">
+                    <a class="fa fa fa-pencil" href="/admin/article/mgr" target="mainFrame"> 文章列表</a>
+                </li>
+            </ul>
+        </li>
+        <!--<li id="article-manage-li">-->
+        <!--<a href="javascript:void(0)"><i class="fa fa fa-volume-up"></i>-->
+        <!--<span class="nav-label">文章管理</span>-->
+        <!--<span class="fa arrow"></span>-->
+        <!--</a>-->
+        <!--<ul class="nav nav-second-level">-->
+
+        <!--</ul>-->
+        <!--</li>-->
+
+
+    </ul>
+</div>
+
+</body>
+</html>

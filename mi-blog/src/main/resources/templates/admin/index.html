@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head th:replace="~{admin/partial/head :: head}"></head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation" th:insert="~{admin/partial/sidebar :: sidebar}" />
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+
+            <iframe name="mainFrame" id="mainFrame" frameborder="0"
+                    src=""
+                    style="margin:0 auto;width:100%;height:95%;">
+            </iframe>
+            <!--添加footer-->
+            <div class="footer fixed" th:insert="~{admin/partial/footer :: copyright}" />
+
+        </div>
+    </div>
+</body>
+<script src="/admin/js/upload-image.js"></script>
+<script src="/admin/js/userinfo.js"></script>
+</html>

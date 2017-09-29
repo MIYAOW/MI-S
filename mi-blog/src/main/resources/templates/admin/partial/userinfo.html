@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<style>
+    fieldset{border:1px solid #1ab394; padding:10px;}
+    legend{display: block;
+        width: auto;
+        padding: 0;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #333;
+        border: none;
+    }
+
+    .input-upload{ position: relative;}
+    .input-upload input[type="file"]{ position: absolute; left: 0px; top: 0px; width: 72px; height: 35px; opacity:.0;filter:alpha(opacity=00);}
+
+</style>
+
+<form id="infoForm" method="post" class="form-horizontal">
+    <fieldset>
+
+        <legend>个人信息修改</legend>
+        <div class="form-group">
+            <input id="username" name="username" th:value="${userInfo.username}" hidden>
+            <label class="col-sm-2 control-label">昵称</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="nickname" name="nickname" maxlength="20" th:value="${userInfo.nickname}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">电话</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="phone" name="phone" maxlength="11" th:value="${userInfo.phone}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">email</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" name="email" maxlength="50" th:value="${userInfo.email}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">地址</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="address" name="address" maxlength="50" th:value="${userInfo.address}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">微信</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="wechart" name="wechart"  maxlength="20"  th:value="${userInfo.wechart}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">telegram群组</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="telegram" name="telegram"  maxlength="20"  th:value="${userInfo.telegram}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">个性签名</label>
+            <div class="col-sm-10">
+                <textarea type="text" class="form-control" id="signature" name="signature" rows="4" maxlength="500" style="width: 430px" th:utext="${userInfo.signature}"></textarea>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">公告</label>
+            <div class="col-sm-10">
+                <textarea type="text" class="form-control" id="announcement" name="announcement" rows="7" maxlength="500" style="width: 430px" th:utext="${userInfo.announcement}"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-4">
+                <button class="btn btn-primary" type="button" onclick="saveInfo()">保存</button>
+                <button class="btn btn-white" type="button" onclick="cancelSaveInfo()">取消</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+</html>

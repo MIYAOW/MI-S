@@ -1,0 +1,24 @@
+server:
+  port: 2002
+  ip: 127.0.0.1
+spring:
+  application:
+    name: MI-EUREKA-CONSUMER
+  boot:
+    admin:
+      url: http://${server.ip}:1000 # 应用服务监控
+
+eureka:
+  client:
+    serviceUrl:
+        defaultZone: http://${server.ip}:2000/eureka/ #,http://mitwo:2000/eureka/
+
+# 消费者中心 Map <Key String>
+info:
+  artifact : mi-eureka-consumer
+  name: ${spring.application.name}
+  description: 消费服务中心
+  version : V1.0
+
+
+# 注意事项：若远程调用服务，可能因为hostname名称识别不了。Win系统下# Windx C:\Windows\System32\drivers\etc 设置 指定好对应的hostname即可

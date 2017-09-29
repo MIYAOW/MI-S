@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="page">
+
+    <div>
+        <div id="pagination" class="pagination" style="float: right"/>
+    </div>
+
+    <script th:inline="javascript">
+        //分页组件第一次加载为true，后面false
+        var if_firstime = true;
+        /*<![CDATA[*/
+        var pages = [[${page}]];
+        var url = document.getElementById('pagination').parentNode.parentNode.getAttribute('url');
+        /*]]>*/
+
+        $("#total-num").text(pages.total);
+        $("#total-page").text(pages.pages);
+        $("#current-page").text(pages.current);
+        $.jqPaginator('#pagination', {
+            totalPages: pages.pages,  //设置分页的总页数
+            totalCounts: pages.total, //设置分页的总条目数
+            visiblePages: 3, //设置最多显示的页码数
+            currentPage: pages.current, //设置当前的页码
+            pageSize: pages.size,
+            first: '<li class="first"><a href="javascript:void(0)">首页</a></li>',
+            prev: '<li class="prev"><a href="javascript:void(0)">上一页</a></li>',
+            next: '<li class="next"><a href="javascript:void(0)">下一页</a></li>',
+            last: '<li class="last"><a href="javascript:void(0)">末页</a></li>',
+            page: '<li class="page"><a href="javascript:void(0)">{{page}}</a></li>',
+            onPageChange: function (page) { //换页方法
+//                console.log("---------" + page);
+                var param = $("#keyword").val();
+                // 当前第几页
+                $("#current-page").text(pages.current);
+                if (if_firstime) {
+                    if_firstime = false;
+                } else if (!if_firstime) {
+                    if (param != null) {
+                        initData(url, page, param);
+                    } else {
+                        initData(url, page, null);
+                    }
+                }
+            }
+        });
+
+        function initData(url, page, param) {
+            $.ajax({
+                type: 'GET',
+                url: url,
+                data: {
+                    "current": page,
+                    "param": param
+                },
+                success: function (data) {
+                    $("#dataList").html(data);
+                }
+            })
+        }
+
+
+    </script>
+</div>
+</html>
+

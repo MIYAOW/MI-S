@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mi.module.blog.mapper.UserMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.mi.module.blog.entity.User">
+		<id column="user_id" property="userId" />
+		<result column="info_id" property="infoId" />
+		<result column="user_name" property="userName" />
+		<result column="user_pwd" property="userPwd" />
+		<result column="enabled" property="enabled" />
+		<result column="credential" property="credential" />
+		<result column="locked" property="locked" />
+		<result column="expired" property="expired" />
+		<result column="create_time" property="createTime" />
+	</resultMap>
+	<select id="selectByName" resultMap="BaseResultMap" parameterType="String">
+		select * FROM blog_user u
+		where u.user_name = #{username}
+	</select>
+
+</mapper>

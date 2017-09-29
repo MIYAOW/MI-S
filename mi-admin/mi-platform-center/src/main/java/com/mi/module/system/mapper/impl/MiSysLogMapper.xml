@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mi.module.system.mapper.MiSysLogMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.mi.module.system.entity.MiSysLog">
+		<id column="log_id" property="logId" />
+		<result column="url" property="url" />
+		<result column="http_method" property="httpMethod" />
+		<result column="ip" property="ip" />
+		<result column="class_method" property="classMethod" />
+		<result column="args" property="args" />
+		<result column="op_user" property="opUser" />
+		<result column="spend_time" property="spendTime" />
+		<result column="result" property="result" />
+	</resultMap>
+
+</mapper>

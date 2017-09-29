@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head th:replace="blog/part/head :: head"></head>
+<body>
+<!--<div class="loader"></div>-->
+<div id="container">
+    <header id="header" th:replace="blog/part/header :: header" />
+
+    <div class="outer">
+        <!-- 左边部分-->
+        <aside id="profile">
+            <!--个人基础信息-->
+            <div class="inner profile-inner" th:replace="blog/left/baseUserInfo :: baseUserInfo"></div>
+
+        </aside>
+
+
+        <!-- 中间部分-->
+        <section id="main">
+
+            <iframe name="indexFrame" id="indexFrame" frameborder="0" onLoad="iFrameHeight()"
+                    src="/article/list"
+                    style="margin:0 auto;width:100%; min-height: 800px;" scrolling="no">
+            </iframe>
+
+        </section>
+
+        <!-- 右边部分-->
+        <aside id="sidebar">
+            <!--公告-->
+            <div class="widget-wrap" th:replace="blog/right/announcement :: announcement"></div>
+            <!--每日一言-->
+            <div class="widget-wrap" th:replace="blog/right/aphorism :: aphorism"></div>
+
+            <!--在线工具-->
+            <div class="widget-wrap" th:replace="blog/right/onlineTool :: onlineTool"></div>
+
+            <!--开源书籍-->
+            <div class="widget-wrap" th:replace="blog/right/books :: books"></div>
+
+            <!--文章分类-->
+            <div class="widget-wrap" th:replace="blog/right/typeList :: typeList"></div>
+
+            <!--标签云-->
+            <div class="widget-wrap" th:replace="blog/right/tagCloud :: tagCloud"></div>
+
+            <div id="toTop" class="fa fa-angle-up"></div>
+        </aside>
+    </div>
+
+
+</div>
+<footer id="footer" th:replace="blog/part/footer :: footer"></footer>
+
+
+<!--<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
+
+<!--<script src="/admin/js/plugins/chosen/chosen.jquery.js"></script>-->
+
+<!-- 解决iFrame自适应问题 -->
+<script type="text/javascript" language="javascript">
+    function iFrameHeight() {
+        var ifm = document.getElementById("indexFrame");
+        ifm.height = 800;//初始值
+        var subWeb = document.frames ? document.frames["indexFrame"].document :
+            ifm.contentDocument;
+        if (ifm != null && subWeb != null) {
+            ifm.height = subWeb.body.scrollHeight;
+        }
+    }
+</script>
+
+</body>
+</html>

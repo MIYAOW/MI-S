@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head th:replace="~{admin/partial/head :: head}"></head>
+
+<div id="wrapper" class="gray-bg dashbard-1">
+    <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>文章列表</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a>主页</a>
+                    </li>
+                    <li>
+                        <a>文章管理</a>
+                    </li>
+                    <li>
+                        <strong>文章列表</strong>
+                    </li>
+                </ol>
+            </div>
+        <div class="col-lg-2"></div>
+
+        </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-sm-2 m-b-xs">
+                                    <select data-placeholder="请选择分类" class="chosen-select" style="width:200px;" id="typeId" name="typeId">
+                                        <option value="">请选择分类</option>
+                                        <option th:each="type : ${typeList}" th:value="${type.typeId}" th:text="${type.typeName}"></option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2 m-b-xs">
+                                    <select data-placeholder="请选择标签" name="tagId" id="tagId" class="chosen-select"
+                                            multiple style="width:200px;" tabindex="5">
+                                        <option hassubinfo="true" th:each="tag : ${tagList}" th:text="${tag.tagName}" th:value="${tag.tagId}"></option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="input-group m-b-xs">
+                                        <input type="text" id="keyword" placeholder="请输入标题"
+                                               class="input-sm form-control" style="font-size: 12px;">
+                                        <span class="input-group-btn">  </span>
+
+                                    </div>
+                                </div>
+                                <button id="article-search" type="button" class="btn btn-sm btn-primary">搜索</button>
+                                <button id="article-add" type="button" class="btn btn-sm btn-danger m-b-xs">添加</button>
+                            </div>
+
+                            <div id="dataList"></div>
+
+                            <div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!--逻辑脚本-->
+<script src="/admin/js/article/article.js"></script>
+
+</body>
+
+</html>

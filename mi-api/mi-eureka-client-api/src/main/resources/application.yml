@@ -1,0 +1,9 @@
+server:
+  port: 1002
+spring:
+  application:
+    name: mi-eureka-client
+eureka:
+  client:
+    serviceUrl:
+       defaultZone: http://mione:1000/eureka/ #,http://mitwo:2000/eureka/

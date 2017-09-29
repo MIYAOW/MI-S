@@ -1,0 +1,42 @@
+server:
+  port: 2000
+  ip: 127.0.0.1
+spring:
+  application:
+    name:  MI-EUREKA-SERVER
+  boot:
+    admin:
+      url: http://${server.ip}:1000  #应用服务监控
+eureka:
+  instance:
+    hostname: ${server.ip}  # Windx C:\Windows\System32\drivers\etc 设置
+
+  #若取消集群注册中心配置 registerWithEureka  fetchRegistry  defaultZone 值修改 true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+        defaultZone: http://${server.ip}:2000/eureka/
+
+  server:
+    enable-self-preservation: true
+    renewalPercentThreshold: 0.7 #设置更新率阈值
+    eviction-interval-timer-in-ms: 20000 #毫秒 有关注册服务调用
+
+#开启shutdown的安全验证
+endpoints:
+  health:
+    sensitive: true
+  shutdown:
+    enabled: true #启用shutdown
+    sensitive: false #禁用密码验证
+    path: /stop/sc_eureka #最好不要暴露出去
+
+
+# 注册服务中心显式内容Map <Key String>
+info:
+  artifact : mi-eureka-server
+  name: ${spring.application.name}
+  description: 注册服务中心
+  version : V1.0
+

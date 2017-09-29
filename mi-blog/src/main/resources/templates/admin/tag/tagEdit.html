@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<style>
+    fieldset{border:1px solid #1ab394; padding:10px;}
+    legend{display: block;
+        width: auto;
+        padding: 0;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #333;
+        border: none;
+    }
+    .input-upload{ position: relative;}
+    .input-upload input[type="file"]{ position: absolute; left: 0px; top: 0px; width: 72px; height: 35px; opacity:.0;filter:alpha(opacity=00);}
+</style>
+
+<form id="editForm" method="post" class="form-horizontal">
+    <fieldset>
+        <legend>编辑</legend>
+        <input type="text" id="tagId" name="tagId" maxlength="35" th:value="${tag.tagId}" hidden>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">标签名</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="tagName" name="tagName" maxlength="35" th:value="${tag.tagName}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">标签别名</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="aliasName" name="aliasName" maxlength="35" th:value="${tag.aliasName}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">排序</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="sort" name="sort" th:value="${tag.sort}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-4">
+                <button class="btn btn-primary" type="button" onclick="saveEdit()">保存</button>
+                <button class="btn btn-white" type="button" onclick="closeEditWindow()">取消</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>MIYAOW | LOGIN</title>
+    <link href="/css/login.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+
+<body class="login" mycollectionplug="bind">
+<div class="login_m">
+    <div class="login_logo">
+        <img src="/image/m.png" href="/" width="40" height="40">
+        <span>MI - Blog 后台管理</span>
+    </div>
+    <!--
+    <div id="error-container">
+        <div class="flash flash-full flash-error">
+            <div class="container">
+                <button class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
+                    <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>-->
+    <div class="login_boder">
+        <form method="post" action="/login">
+        <div class="login_padding" id="login_model">
+
+            <h2>用户名：</h2>
+            <label>
+                <input type="text" value="miyaow" id="username" name="username"  class="txt_input txt_input2"
+                       placeholder="请输入用户名" required>
+            </label>
+            <h2>密 码：</h2>
+            <label>
+                <input type="password" value="123" name="password" id="password" class="txt_input" placeholder="请输入密码" required>
+            </label>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> 请记住我
+                </label>
+
+                <!--<p class="forgot" style="float: right;"><a id="iforget" href="#">忘记密码?</a></p>-->
+            </div>
+
+
+            <div class="rem_sub">
+                <label>
+                    <div class="rem_sub_l">
+                        <input type="submit" class="sub_button" name="button" id="login-button" value="登 录">
+                        <input type="button" class="sub_button" name="back-button" id="back-button" value="返回主页"
+                               style="background-color: blue;">
+                    </div>
+                </label>
+            </div>
+
+
+        </div>
+
+        </form>
+        <div id="forget_model" class="login_padding" style="display:none">
+            <br>
+
+            <h1>Forgot password</h1>
+            <br>
+            <div class="forget_model_h2">
+                (Please enter your registered email below and the system will automatically
+                reset users’ password and send it to user’s registered email address.)
+            </div>
+            <label>
+                <input type="text" id="usrmail" class="txt_input txt_input2">
+            </label>
+            <div class="rem_sub">
+                    <input type="submit" class="forget_button" name="button" id="Retrievenow" value="Retrieve Now" style="float:left">
+                    <input type="submit" class="forget_button" name="button" id="denglou" value="Return">　　
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!--格言-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<body>
+    <div class="widget-wrap" th:fragment="announcement">
+        <h3 class="follow">系统公告</h3>
+        <div class="widget">
+            <div class="card-front animated col s12 m12 l8 offset-l2 fadeInUp bg-aphorism" style="background-color: rgb(222, 222, 215);">
+                <p class="bg-danger">
+                    <span th:utext="${userInfo.announcement}"></span>
+                    <span class="aphorism-author"> -- [[${userInfo.nickName}]]</span>
+                    <br>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mi.module.blog.mapper.UserInfoMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.mi.module.blog.entity.UserInfo">
+		<id column="info_id" property="infoId" />
+		<result column="avatar_url" property="avatarUrl" />
+		<result column="nick_name" property="nickName" />
+		<result column="phone" property="phone" />
+		<result column="email" property="email" />
+		<result column="address" property="address" />
+		<result column="wechart" property="wechart" />
+		<result column="wechart_img" property="wechartImg" />
+		<result column="signature" property="signature" />
+	</resultMap>
+
+	<select id="selectByUserId" resultMap="BaseResultMap" parameterType="string">
+		select  *  from blog_user_info ui  order by ui.info_id asc limit 1
+	</select>
+</mapper>

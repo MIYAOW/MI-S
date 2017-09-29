@@ -1,0 +1,27 @@
+server:
+  port: 3000
+
+# 配置服务注册中心
+eureka:
+  client:
+    serviceUrl:
+       defaultZone: http://mione:1000/eureka/ #,http://mitwo:2000/eureka/
+
+# Git仓库配置
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/MIYAOW/MI/
+          search-paths: mi-config/mi-cloud-config-repo
+          username: username
+          password: password
+  application:
+    name: mi-cloud-config-server
+
+## HttpBasic 认证
+#security:
+#  user:
+#    name: miyaow # 默认user
+#    password: miyaow

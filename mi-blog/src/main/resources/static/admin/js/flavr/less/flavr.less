@@ -1,0 +1,119 @@
+@import "mixins.less";
+@bg-color: #2e3846;
+
+.flavr-container { position: fixed; text-align: center; visibility: visible; left: 0; right: 0; top: 0; bottom: 0;
+                    pointer-events: none; display: none; z-index: 999; margin: 0 -30px 0 0; 
+                    .transform( translateZ(0) );
+    *, *:before, *:after { .box-sizing( border-box ); }
+    .cleafix:after, &.clearfix:after { content: " "; display: table; clear: both; }
+    &.modal { pointer-events: auto; }
+    &.shown { display: block; }
+    &.top-mid .flavr-fixer { margin: 0; }
+    &.top-left .flavr-fixer { position: fixed; margin: 0; top: 0; right: auto; bottom: auto; left: 0; }
+    &.top-right .flavr-fixer { position: fixed; margin: 0; top: 0; right: 0; bottom: auto; left: auto; }
+    &.bottom-left .flavr-fixer { position: fixed; margin: 0; top: auto; right: auto; bottom: 0; left: 0; }
+    &.bottom-right .flavr-fixer { position: fixed; margin: 0; top: auto; right: 0; bottom: 0; left: auto; }
+    &.bottom-mid { 
+        .flavr-fixer { position: fixed; margin: 0; top: auto; right: auto; bottom: 0; left: 50%; text-align: left; 
+            .flavr-outer { margin-left: -50%; width: 100%; }
+        }
+    }
+    &.fullscreen .flavr-fixer{ margin-top: 0; }
+    
+    .flavr-overlay { position: fixed; top: 0; right: 0; bottom: 0; left: 0; visibility: inherit; 
+                    background: rgba(0,0,0,0.4);                    
+    }
+    .flavr-fixer { position: relative; margin: 12% auto 0; display: inline-block; width: auto; pointer-events: auto;
+                    .transition( margin .3s );
+        .flavr-outer { background: @bg-color; min-width: 300px; height: auto; text-align: center;
+                font-family: Helvetica, Arial, sans-serif; .border-radius(3px); .box-shadow( 0 2px 4px 0 rgba(0,0,0,.3) );
+            .flavr-content { font-size: 14px; color: #fff; padding: 20px 30px 8px; 
+                .flavr-icon { margin-top: 10px; margin-bottom: 10px; 
+                    img { max-height: 75px; max-width: 75px; }
+                }
+                .flavr-title { margin: 0; margin-bottom: 6px; font-size: 1.3em; line-height: 1.5; }
+                .flavr-message { margin-top: 6px; color: inherit; text-shadow: 2px 2px rgba(0,0,0,0.1); line-height: 1.5; 
+                    form {
+                        .form-row { text-align: left; margin-top: 8px; }
+                        input { display: block; width: 100%; border: 0; padding: 8px 6px 7px 15px; 
+                                background-color: #f6f6f6; outline: none; height: 35px;
+                            &[type=checkbox], &[type=radio] { display: inline; width: auto; margin-left: 12px;
+                                background-color: transparent; height: auto;
+                                &:first-child { margin-left: 0; }
+                            }
+                        }
+                        select { display: block; background-color: #f6f6f6; height: 36px; width: 100%; 
+                                border: 0; outline: none; color: #666; padding: 6px 6px 7px 15px;
+                        }
+                        label { font-size: 0.9em; }
+                        button, input[type=button], input[type=submit], input[type=reset], a.btn {
+                            display: block; outline: none; text-decoration: none; padding: 8px 12px; 
+                            margin-top: 8px; margin-bottom: 4px; font-size: 14px; font-weight: normal; 
+                            line-height: 1.428571429; color: #fff; background-color: #795aac; text-align: center;
+                            white-space: nowrap; vertical-align: middle; cursor: pointer; background-image: none;
+                            border: none; .border-radius(3px); .user-select(none); .transition( all ease .3s );
+                        }
+                        button:hover, button:focus, input[type=button]:hover, input[type=button]:focus,
+                        input[type=submit]:hover, input[type=submit]:focus, input[type=reset]:hover, input[type=reset]:focus,
+                        a.btn:hover, a.btn:focus { outline: none; background-color: #3e4b5d; }                        
+                    }
+                }
+            }
+            .flavr-toolbar { white-space: nowrap; padding: 0 30px 20px; 
+                .flavr-button { outline: none; display: block; text-decoration: none !important; padding: 7px 12px;
+                                margin-top: 8px; margin-bottom: 4px; font-size: 13px; font-weight: normal;
+                                line-height: 1.428571429; color: #fff; background-color: #795aac; text-align: center;
+                                white-space: nowrap; vertical-align: middle; cursor: pointer; background-image: none;
+                                border: none; .border-radius(3px); .user-select(none); .transition( all ease .3s );
+                    &:hover, &:focus { outline: none; background-color: #3e4b5d; color: #fff; }
+                }
+                .flavr-button.primary { background-color: #2980b9 }
+                .flavr-button.primary:hover,
+                .flavr-button.primary:focus { background-color: #3e4b5d }
+                
+                .flavr-button.success { background-color: #27ae60 }
+                .flavr-button.success:hover,
+                .flavr-button.success:focus { background-color: #3e4b5d }
+                
+                .flavr-button.info { background-color: #1fb5ad }
+                .flavr-button.info:hover,
+                .flavr-button.info:focus { background-color: #3e4b5d }
+                
+                .flavr-button.warning { background-color: #f39c12 }
+                .flavr-button.warning:hover,
+                .flavr-button.warning:focus { background-color: #3e4b5d }
+                
+                .flavr-button.danger { background-color: #f44a56 }
+                .flavr-button.danger:hover,
+                .flavr-button.danger:focus { background-color: #3e4b5d }
+            }
+            .flavr-toolbar.inline {
+                .flavr-button { display: inline-block; width: auto; min-width: 120px; margin-left: 6px; margin-top: 2px; }
+                .flavr-button:first-child { margin-left: 0; }
+            }
+            .flavr-toolbar.stacked {
+                .flavr-button:first-child { margin-top: 0; }
+            }
+        }
+    }
+    /* IE 8 compability fixes */
+    &.msie8 {
+        .flavr-overlay { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiSAMAAG8AaYLq42UAAAAASUVORK5CYII=');
+            &.opacity-10 { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNikAQAACIAHF/uBd8AAAAASUVORK5CYII='); }
+            &.opacity-20 { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiMAYAADwANpiOMBYAAAAASUVORK5CYII='); }
+            &.opacity-30 { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNi8AEAAFUATydJphIAAAAASUVORK5CYII='); }
+            &.opacity-40 { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiSAMAAG8AaYLq42UAAAAASUVORK5CYII='); }
+            &.opacity-50 { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiqAcAAIgAgoGu+rEAAAAASUVORK5CYII='); }
+            &.opacity-60 { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNimAkAAKIAnNwSwMYAAAAASUVORK5CYII='); }
+            &.opacity-70 { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNi2AQAALsAtXXCpvIAAAAASUVORK5CYII='); }
+            &.opacity-80 { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiOAMAANUAz5n+TlUAAAAASUVORK5CYII='); }
+            &.opacity-90 { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNieAoAAO4A6HfO1f4AAAAASUVORK5CYII='); }            
+            &.opacity-100 { background-image: none; background-color: #000; }
+        }
+    }
+    /* IE 8 & 9 compability fixes */
+    &.ie-overlay-false { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII='); }
+    
+}
+
+

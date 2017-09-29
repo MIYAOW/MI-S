@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head th:replace="~{admin/partial/head :: head}"></head>
+
+<body>
+<div id="wrapper" class="gray-bg dashbard-1">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>标签列表</h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a>主页</a>
+                </li>
+                <li>
+                    <strong>标签管理</strong>
+                </li>
+            </ol>
+        </div>
+        <div class="col-lg-2">
+
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <input type="text" id="keyword" placeholder="请输入标签名称" class="input-sm form-control">
+                                    <span class="input-group-btn"></span>
+                                </div>
+                            </div>
+                            <button id="search" type="button" class="btn btn-sm btn-primary">搜索</button>
+                            <button id="add" type="button" class="btn btn-sm btn-danger">添加</button>
+                        </div>
+
+                        <!-- 表格数据 -->
+                        <div id="dataList"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 编辑页面 -->
+<div class="modal inmodal" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div id="editContent" class="modal-body">
+
+        </div>
+    </div>
+</div>
+<!-- 新增页面 -->
+<div class="modal inmodal" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div id="addContent" class="modal-body">
+
+        </div>
+    </div>
+</div>
+
+<!-- 逻辑脚本 -->
+<script src="/admin/js/tag/tag.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+
+.bordered ( @top-color: #eee; @right-color: #eee; @bottom-color: #eee; @left-color: #eee ) {
+    border-top: solid 1px @top-color;
+    border-left: solid 1px @left-color;
+    border-right: solid 1px @right-color;
+    border-bottom: solid 1px @bottom-color;
+}
+.box-shadow (...) {
+  -webkit-box-shadow: @arguments;
+     -moz-box-shadow: @arguments;
+          box-shadow: @arguments;
+}
+.border-radius ( @radius: 5px ) {
+    -webkit-border-radius: @radius;
+       -moz-border-radius: @radius;
+            border-radius: @radius;
+    .background-clip ( padding-box );
+}
+.rounded ( @radius: 5px ) {
+    .border-radius ( @radius );
+}
+.border-radiuses ( @topright: 0; @bottomright: 0; @bottomleft: 0; @topleft: 0 ) {
+    -webkit-border-top-right-radius: @topright;
+    -webkit-border-bottom-right-radius: @bottomright;
+    -webkit-border-bottom-left-radius: @bottomleft;
+    -webkit-border-top-left-radius: @topleft;
+    -moz-border-radius-topright: @topright;
+    -moz-border-radius-bottomright: @bottomright;
+    -moz-border-radius-bottomleft: @bottomleft;
+    -moz-border-radius-topleft: @topleft;
+    border-top-right-radius: @topright;
+    border-bottom-right-radius: @bottomright;
+    border-bottom-left-radius: @bottomleft;
+    border-top-left-radius: @topleft;
+    .background-clip(padding-box);
+}
+.opacity ( @opacity: 0.5 ) {
+    -webkit-opacity: @opacity;
+     -khtml-opacity: @opacity;
+       -moz-opacity: @opacity;
+            opacity: @opacity;
+    @opperc: @opacity * 100;
+    -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
+    filter: ~"alpha(opacity=@{opperc})";
+}
+.transform (...) {
+    -webkit-transform: @arguments;
+       -moz-transform: @arguments;
+        -ms-transform: @arguments;
+         -o-transform: @arguments;
+            transform: @arguments;
+}
+.rotate ( @deg: 5deg ) {                .transform ( rotate(@deg) );            }
+.rotateX ( @deg: 5deg ) {               .transform ( rotateX(@deg) );           }
+.rotateY ( @deg: 5deg ) {               .transform ( rotateY(@deg) );           }
+.rotateZ ( @deg: 5deg ) {               .transform ( rotateZ(@deg) );           }
+.scale ( @ratio: 1.5 ) {                .transform ( scale(@ratio) );           }
+.translate ( @x: 0; @y: 0 ) {           .transform ( translate(@x, @y) );       }
+.translateX( @x: 0 ) {                  .transform ( translateX(@x) );          }
+.translateY( @y: 0 ) {                  .transform ( translateY(@y) );          }
+.translateZ( @z: 0 ) {                  .transform ( translateZ(@z) );          }
+.translate3d ( @x: 0; @y: 0; @z: 0; ) { .transform ( translate3d(@x, @y, @z) ); }
+
+.perspective ( @persp: 800px ) {
+    -webkit-perspective: @persp; 
+       -moz-perspective: @persp; 
+        -ms-perspective: @persp; 
+         -o-perspective: @persp;
+            perspective: @persp;
+}
+.backface-visibility ( @value: hidden ) {
+	-webkit-backface-visibility: @value;
+	   -moz-backface-visibility: @value;
+	    -ms-backface-visibility: @value;
+	     -o-backface-visibility: @value;
+	        backface-visibility: @value;
+}
+.transform-style ( @style: preserve-3d ) {
+    -webkit-transform-style: @style;
+	   -moz-transform-style: @style;
+	    -ms-transform-style: @style;
+	     -o-transform-style: @style;
+	        transform-style: @style;
+}
+.preserve-3d () { 
+    .transform-style ( preserve-3d ); 
+}
+
+.transition (...) {
+    -webkit-transition: @arguments;
+       -moz-transition: @arguments;
+         -o-transition: @arguments;
+            transition: @arguments;
+}
+.transition-property (...) {
+    -webkit-transition-property: @arguments;
+       -moz-transition-property: @arguments;
+         -o-transition-property: @arguments;
+            transition-property: @arguments;
+}
+.transition-property-with-transform (...) {
+    -webkit-transition-property: -webkit-transform, @arguments;
+       -moz-transition-property: -moz-transform, @arguments;
+        -ms-transition-property: -ms-transform, @arguments;
+         -o-transition-property: -o-transform, @arguments;
+            transition-property: transform, @arguments;
+}
+.transition-duration ( @duration: 0.2s ) {
+    -webkit-transition-duration: @duration;
+       -moz-transition-duration: @duration;
+         -o-transition-duration: @duration;
+            transition-duration: @duration;
+}
+.transition-timing-function ( @timing: ease ) {
+    -webkit-transition-timing-function: @timing;
+       -moz-transition-timing-function: @timing;
+         -o-transition-timing-function: @timing;
+            transition-timing-function: @timing;
+}
+.transition-delay ( @delay: 0s ) {
+    -webkit-transition-delay: @delay;
+       -moz-transition-delay: @delay;
+         -o-transition-delay: @delay;
+            transition-delay: @delay;
+}
+.transition-transform ( @duration: .5s; @easing: ~'' ) {
+    -webkit-transition: -webkit-transform @duration @easing;
+	   -moz-transition: -moz-transform @duration @easing;
+	    -ms-transition: -ms-transform @duration @easing;
+	     -o-transition: -o-transform @duration @easing;
+	        transition: transform @duration @easing;
+}
+.animation (...) {
+    -webkit-animation: @arguments;
+	   -moz-animation: @arguments;
+	    -ms-animation: @arguments;
+	     -o-animation: @arguments;
+	        animation: @arguments;
+}
+.inner-shadow ( @horizontal: 0; @vertical: 1px; @blur: 2px; @alpha: 0.4 ) {
+    -webkit-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+       -moz-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+            box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+}
+.box-shadow (...) {
+    -webkit-box-shadow: @arguments;
+       -moz-box-shadow: @arguments;
+            box-shadow: @arguments;
+}
+.box-sizing ( @sizing: border-box ) {
+    -webkit-box-sizing: @sizing;
+       -moz-box-sizing: @sizing;
+        -ms-box-sizing: @sizing;
+            box-sizing: @sizing;
+}
+.user-select ( @argument: none ) {
+    -webkit-touch-callout: @argument;
+      -webkit-user-select: @argument;
+       -khtml-user-select: @argument;
+         -moz-user-select: @argument;
+          -ms-user-select: @argument;
+              user-select: @argument;
+}
+.background-clip ( @argument: padding-box ) {
+    -webkit-background-clip: @argument;
+       -moz-background-clip: @argument;
+            background-clip: @argument;
+}
+.ie-rgba ( @color: black; @alpha: .5 ){
+    @rgba: rgba( red( @color ), green( @color ), blue( @color ), @alpha );
+    @argb: argb( @rgba );
+    background: transparent\9;
+    *background: transparent;
+    filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argb}, endColorstr=@{argb})";
+    -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argb}, endColorstr=@{argb})";
+    zoom: 1;
+}

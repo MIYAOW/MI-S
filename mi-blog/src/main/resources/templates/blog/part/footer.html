@@ -1,0 +1,110 @@
+<!--footer部分-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<body>
+    <footer id="footer" th:fragment="footer">
+        <div class="outer">
+            <div id="footer-info" class="inner">
+
+                <div class="row" style="text-align: left;">
+                    <div class="col-md-3 col-sm-6">
+                        <!--关注我们-->
+                        <div class="widget-wrap widget-list">
+                            <h3 class="widget-title">其他平台</h3>
+                            <div class="widget">
+                                <ul>
+                                    <li class="foot-li">
+                                        <a href="https://github.com/miyaow">Github</a>
+                                    </li>
+                                    <li class="foot-li">
+                                        <a href="http://git.oschina.net/miyaow">码云</a>
+                                    </li>
+                                    <li class="foot-li">
+                                        <a href="http://www.jianshu.com/u/">简书</a>
+                                    </li>
+                                    <li class="foot-li">
+                                        <a href="https://www.zhihu.com/people/">知乎</a>
+                                    </li>
+                                    <li class="foot-li">
+                                        <a href="https://my.oschina.net">开源中国</a>
+                                    </li>
+                                    <!--<li class="foot-li">-->
+                                    <!--<a href="http://weibo.com/">新浪微博</a>-->
+                                    <!--</li>-->
+                                    <!--<li class="foot-li">-->
+                                    <!--<a href="https://segmentfault.com/u/">SegmentFault</a>-->
+                                    <!--</li>-->
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <!--联系合作-->
+                        <div class="widget-wrap widget-list">
+                            <h3 class="widget-title">联系合作</h3>
+                            <div class="widget">
+                                <ul>
+                                    <li class="foot-li">
+                                        <a href="#">微信：见隔壁二维码</a>
+                                    </li>
+                                    <li class="foot-li">
+                                        <a href="#">QQ：454514080</a>
+                                    </li>
+                                    <li class="foot-li">
+                                        <a href="#">邮箱：454514080@qq.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+
+                        <!--友情链接-->
+                        <div class="widget-wrap widget-list">
+                            <h3 class="widget-title">友情链接</h3>
+                            <div class="widget">
+                                <ul>
+
+                                <span class="label" th:each="fLink : ${fLinkList}">
+                                     <a target="_blank" th:href="${fLink.siteUrl}" th:text="${fLink.siteName}"></a>
+                                </span>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <!--联系合作-->
+                        <div class="widget-wrap widget-list">
+                            <h3 class="widget-title">我的微信</h3>
+                            <div class="widget">
+                                <img style="width: 200px;" src="/image/wechar.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div style="clear: left;"></div>
+                    &copy; 2017 - 2018 MIYAOW | YESH 版权所有<br>
+                    闽ICP备XXXXXXXX号
+                    <div style="display: none;">
+                        <span id="busuanzi_container_site_pv">访问量<span class="foot-count"
+                                                                       id="busuanzi_value_site_pv"></span>次</span>
+                        <span id="busuanzi_container_site_uv">访客数<span class="foot-count"
+                                                                       id="busuanzi_value_site_uv"></span>人次</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Search Scripts -->
+        <script src="/js/insight.js"></script>
+        <script src="/js/lightgallery.min.js"></script>
+    </footer>
+
+</body>
+
+</html>

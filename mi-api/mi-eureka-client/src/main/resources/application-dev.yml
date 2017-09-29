@@ -1,0 +1,56 @@
+server:
+  port: 2001
+  ip: 127.0.0.1
+spring:
+  application:
+    name: MI-EUREKA-CLIENT
+  aop:
+    auto: true # 开启AOP功能
+  boot:
+     admin:
+      url: http://${server.ip}:1000 # 应用服务监控
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${server.ip}:2000/eureka/  # http://mitwo:2000/eureka/
+  instance:
+    status-page-url: http://${server.ip}:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
+
+# 服务提供中心 Map <Key String>
+info:
+  artifact : mi-eureka-client
+  name: ${spring.application.name}
+  description: 服务提供中心
+  version : V1.0
+
+swagger:
+  docket:
+    pro:
+     title: MI-Client 项目 Platform API (产品版本)
+     description: REST API 设计在细节上有很多自己独特的需要注意的技巧，并且对开发人员在构架设计能力上比传统 API 有着更高的要求。<br/>本文通过翔实的叙述和一系列的范例，从整体结构，到局部细节，分析和解读了为了提高易用性和高效性，REST API 设计应该注意哪些问题以及如何解决这些问题。
+     version: 1.0.RELEASE
+     license: Apache License,Version 2.0
+     licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+     termsOfServiceUrl: https://github.com/miyaow/mi
+     contact:
+        name: MIYAOW
+        url: http://blog.csdn.net/fjnpysh
+        email: 454514080@qq.com
+     base-package: com.mi.controller
+     base-path: /**
+     exclude-path: /error,/ops/**
+
+    dev:
+     title: MI-Client 项目 Platform API (生产版本)
+     description: REST API 设计在细节上有很多自己独特的需要注意的技巧，并且对开发人员在构架设计能力上比传统 API 有着更高的要求。<br/>本文通过翔实的叙述和一系列的范例，从整体结构，到局部细节，分析和解读了为了提高易用性和高效性，REST API 设计应该注意哪些问题以及如何解决这些问题。
+     version: 1.0.RELEASE
+     license: Apache License,Version 2.0
+     licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+     termsOfServiceUrl: https://github.com/miyaow/mi
+     contact:
+       name: MIYAOW2
+       url: http://blog.csdn.net/fjnpysh
+       email: dyc87112@qq.com
+     base-package: com.mi.controller
+     base-path: /**
+     exclude-path: /error,/ops/**

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mi.module.blog.mapper.ArticleMapper">
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.mi.module.blog.entity.Article">
+		<id column="article_id" property="articleId" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="description" property="description" />
+		<result column="status" property="status" />
+		<result column="class_type" property="classType"/>
+		<result column="author" property="author" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="look_count" property="lookCount" />
+	</resultMap>
+
+
+	<resultMap id="article" type="com.mi.data.vo.ArticleVo">
+		<id column="article_id" property="articleId" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="description" property="description" />
+		<result column="status" property="status" />
+        <result column="class_type" property="classType"/>
+		<result column="author" property="author" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="look_count" property="lookCount" />
+		<collection property="tagList" column="article_id" select="getTag"/>
+		<collection property="typeList" column="article_id" select="getType"/>
+
+	</resultMap>
+
+	<!--条件查询文章-->
+	<select id="selectArticlePage" resultMap="BaseResultMap" parameterType="map">
+		select b.*
+		from blog_article b
+		where 1=1
+		<if test="p.typeId != null and p.typeId != ''">
+			and b.article_id in
+			(
+			select DISTINCT article_Id from blog_article_type where blog_article_type.type_Id
+			= #{p.typeId}
+			)
+		</if>
+		<if test="p.tags != null and p.tags != ''">
+			and b.article_id in
+			(select DISTINCT article_Id from blog_article_tag where blog_article_tag.tag_Id in
+			<foreach collection="p.tags" item="item" index="index" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+			)
+		</if>
+		<if test="p.title != null and p.title != ''">
+			and b.title like concat('%',#{p.title},'%')
+		</if>
+		ORDER BY b.create_time desc
+	</select>
+
+	<!--获取所有的文章-->
+	<select id="getArticleCount" resultType="int">
+		select count(article_id) from blog_article where status = 1
+	</select>
+
+	<select id="selectArticleList" resultMap="article">
+       select * from  blog_article ba
+       where ba.status = 1
+		order by ba.create_time desc
+	</select>
+
+	<!--通过文章id获取tag列表-->
+	<select id="getTag" resultType="com.mi.module.blog.entity.Tag" parameterType="String">
+		select
+		bat.article_id as articleId,
+		bat.tag_id as tagId,
+		bt.tag_name as tagName
+		from blog_article_tag bat
+		LEFT JOIN blog_tag bt on bat.tag_id = bt.tag_id
+		where bat.article_id = #{articleId}
+	</select>
+	<!--通过文章id获取Type列表-->
+	<select id="getType" resultType="com.mi.module.blog.entity.Type">
+		select
+		bat.article_id as articleId,
+		bat.type_id as typeId,
+		bt.type_name as typeName
+		from blog_article_type bat
+		LEFT JOIN blog_type bt on bat.type_id = bt.type_id
+		where bat.article_id = #{articleId}
+	</select>
+
+	<!--获取文章的时间归档列表 -->
+	<select id="selectArticleArchiveList" resultType="java.util.Map">
+		select DATE_FORMAT(create_time,'%Y-%m') create_time,count(article_id) count
+		from blog_article
+		group by DATE_FORMAT(create_time,'%Y-%m') ORDER BY create_time desc
+	</select>
+
+	<!--按时间归档加载文章-->
+	<select id="selectArticleByArchive" resultMap="article">
+
+	</select>
+
+	<!--通过关键字查找文章-->
+	<select id="selectArticleListByKeywords"  resultMap="BaseResultMap" parameterType="Map">
+		<if test="keyword != null and keyword != ''">
+			select article_id,title,description
+			from blog_article
+			where status = 1 and title like concat('%',#{keyword},'%') or description like concat('%',#{keyword},'%') or
+			content like concat('%',#{keyword},'%')
+			limit 0,10
+
+		</if>
+		<if test="keyword == null or keyword == ''">
+			select article_id,title,description
+			from blog_article
+			where status = 1
+			limit 0,10
+		</if>
+	</select>
+
+	<!--通过id查找 博文的详细信息-->
+	<select id="getArticleCustomById" resultMap="article" parameterType="String">
+        select * from blog_article ba
+        where ba.status = 1 and ba.article_id = #{articleId}
+    </select>
+
+	<!--获取上一篇文章信息  大于当前时间且最靠近当前时间的第一篇 -->
+	<select id="getLastArticle" resultType="com.mi.module.blog.entity.Article">
+		select article_id as articleId,title from blog_article
+		where create_time &lt; (select create_time from blog_article where article_id = #{articleId})
+		and status = 1
+		ORDER BY create_time asc LIMIT 1
+	</select>
+
+	<!--获取下一篇文章信息 小于当前时间且最靠近当前时间的第一篇-->
+	<select id="getNextArticle" resultType="com.mi.module.blog.entity.Article">
+		select article_id as articleId,title from blog_article
+		where create_time &gt; (select create_time from blog_article where article_id = #{articleId})
+		and status = 1
+        ORDER BY create_time asc LIMIT 1
+	</select>
+
+	<!--增加文章的阅读量-->
+	<update id="addArticleCount">
+		update blog_article set look_count = look_count+1 where article_id = #{articleId}
+	</update>
+
+
+	<!--通过分类获取所有的文章-->
+	<select id="selectArticleByType" resultMap="article">
+		select ba.*
+		from blog_article ba
+		LEFT JOIN blog_article_type  bat ON ba.article_id =  bat.article_id
+		where ba.status = 1
+		and bat.type_id = #{typeId}
+		ORDER BY ba.create_time
+		limit #{pager.start},#{pager.limit}
+	</select>
+    <!--通过分类获取所有的文章-->
+    <select id="selectArticleByType2" resultMap="article">
+		select ba.*
+		from blog_article ba
+		LEFT JOIN blog_article_type  bat ON ba.article_id =  bat.article_id
+		where ba.status = 1
+		and bat.type_id = #{typeId}
+		ORDER BY ba.create_time
+	</select>
+	<!--通过标签获取所有的文章-->
+	<select id="selectArticleByTag" resultMap="article">
+		select ba.*
+		from blog_article ba
+		LEFT JOIN blog_article_tag  bat ON ba.article_id =  bat.article_id
+		where ba.status = 1
+		and bat.tag_id = #{tagId}
+		ORDER BY ba.create_time
+	</select>
+</mapper>

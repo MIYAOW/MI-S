@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<div class="timeline timeline-wrap" th:fragment="tag-summary">
+    <div class="timeline-row timeline-row-major">
+        <span class="node"><i class="fa fa-folder"></i></span>
+        <h1 class="title" th:text="'#'+${tagName}"></h1>
+    </div>
+
+    <div th:each="article: ${page.records}">
+        <div class="timeline-row">
+            <span class="node"></span>
+            <div class="content">
+                <h1 itemprop="name">
+                    <a class="timeline-article-title" target="_blank"
+                       th:href="'/article/details/'+${article.articleId}" th:text="${article.title}"></a>
+                </h1>
+                <div class="article-meta">
+                    <div class="article-date">
+                        <i class="fa fa-calendar"></i>
+                        <a>
+                            <time itemprop="datePublished"
+                                  th:text="${#dates.format(article.createTime,'yyyy-MM-dd')}"></time>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自定义分页插件 Url : 方法请求数据路径 data : 当前页面参数 -->
+    <div th:include="blog/part/page :: page" th:url="'/tag/list/'+${tagId}"></div>
+
+</div>
+</html>
+

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head th:replace="blog/part/head :: head"></head>
+<body>
+
+<div id="dataList">
+
+    <article th:each="article : ${page.records}"
+             th:id="'/article/details/'+${article.articleId}"
+             class="article article-type-post"
+             itemscope itemprop="blogPost" th:fragment="article-summary">
+        <div class="article-inner">
+
+            <header class="article-header">
+
+                <h1 itemprop="name">
+                    <a class="article-title" target="_blank" th:href="'/article/details/'+${article.articleId}"
+                       th:text="${article.title}"></a>
+                </h1>
+
+                <div class="article-meta">
+
+                    <div class="article-date">
+
+                    <span th:classappend="${article.classType}==0?'label label-success':'label label-warning'"
+                          style="float: left;padding: 3px 5px 3px 5px;margin: 7px;"
+                          th:text="${article.classType==0?'原创':'转载'}"></span>
+
+                        <i class="fa fa-calendar"></i>
+                        <a>
+                            <time itemprop="datePublished"
+                                  th:text="${#dates.format(article.createTime,'yyyy-MM-dd')}"></time>
+                        </a>
+                    </div>
+
+                    <div class="article-category" style="text-transform: none;">
+                        <i class="fa fa-user"></i>
+                        <!--th:hreftypegory/details/'+${articleList.categoryId}"-->
+                        <b th:text="${article.author}"></b>
+                    </div>
+
+                    <div class="article-category" style="text-transform: none;" th:each="type : ${article.typeList}">
+                        <i class="fa fa-folder"></i>
+                        <!--th:hreftypegory/details/'+${articleList.categoryId}"-->
+                        <a class="article-category-link" target="indexFrame" th:href="'/type/list/'+${type.typeId}"
+                           th:text="${type.typeName}" style="cursor: pointer"></a>
+                    </div>
+
+
+                </div>
+
+            </header>
+
+
+            <div class="article-entry" itemprop="articleBody" th:text="${article.description}"></div>
+
+
+            <div class="article-more">
+                <p class="article-more-link">
+                    <!--th:href="'/article/details/'+${articleList.id}"-->
+                    <a title=" 详细 " class="read-more" target="_blank" th:href="'/article/details/'+${article.articleId}"
+                       style="cursor: pointer">阅读全文</a>
+                </p>
+            </div>
+            <footer class="article-footer">
+                <div class="share-container" style="text-transform: none;" th:if="${article.tagList.size()}>0">
+                    <i class="fa fa-tag"></i>
+                    <!--th:href="'/tag/details/'+${tagListStat.tagId}"-->
+                    <a class="article-tag-link" th:each="tag : ${article.tagList}" th:href="'/tag/list/'+${tag.tagId}"
+                       th:text="${tag.tagName+' '}" style="cursor: pointer">
+                    </a>
+                </div>
+
+
+            </footer>
+        </div>
+
+    </article>
+
+
+    <div th:replace="blog/part/page :: page" url="/article/list"></div>
+</div>
+</body>
+</html>

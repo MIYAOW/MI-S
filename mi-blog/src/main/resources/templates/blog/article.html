@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+
+<head th:replace="blog/part/head :: head">
+
+    <style>
+        @media screen and (min-width: 1200px) {
+            #main {
+                display: inline;
+                float: left;
+                width: 80%;
+                margin: 0 0.769230769230769%;
+            }
+        }
+        @media screen and (min-width: 1199px) and (max-width: 1199px) {
+            #main {
+                display: inline;
+                float: left;
+                width: 90%;
+                margin: 0 0.769230769230769%;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div id="container">
+    <header id="header" th:replace="blog/part/header :: header">
+    </header>
+    <div class="outer">
+
+        <!-- 左边部分-->
+        <aside id="profile">
+            <!--个人基础信息-->
+            <div class="inner profile-inner" th:replace="blog/left/baseUserInfo :: baseUserInfo"></div>
+
+        </aside>
+
+        <section id="main">
+
+            <div id="main-article">
+                <article id="post-zuul-vs-nginx-performance" class="article article-type-post" itemscope="" itemprop="blogPost">
+                <div class="article-inner">
+
+                    <header class="article-header">
+
+                        <h1 class="article-title" itemprop="name">
+                            <span id="article-title" th:text="${article.title}"></span>
+                        </h1>
+
+                        <div class="article-meta">
+
+                            <div class="article-date">
+                                <i class="fa fa-calendar"></i>
+                                <a th:href="'/article/details/'+${article.articleId}" id="article-url">
+                                    <time datetime="2017-04-03" itemprop="datePublished" th:text="${#dates.format(article.createTime,'yyyy-MM-dd')}"></time>
+                                </a>
+                            </div>
+
+
+                            <span id="busuanzi_container_page_pv" style="display: inline;">被偷窥 →_→
+                                <span id="busuanzi_value_page_pv" th:text="${article.lookCount}"></span> 次
+                            </span>
+
+                        </div>
+
+
+                    </header>
+
+
+                    <div class="article-entry" itemprop="articleBody" lg-uid="lg0">
+                        <div id="article-content">
+                            <textarea id="append-test" style="display:none;" th:utext="${article.content}"></textarea>
+                        </div>
+                    </div>
+
+
+                    <footer class="article-footer">
+                        <div id="socialShare" class="socialShare" th:data-title="${article.title}"
+                             th:data-url="'/article/details/'+${article.articleId}"
+                             th:data-desc="${article.description}"></div>
+                    </footer>
+
+
+                </div>
+
+
+                    <nav id="article-nav">
+
+                        <a th:if="${lastArticle != null}" th:href="'/article/details/'+${lastArticle.articleId}"
+                           id="article-nav-newer" class="article-nav-link-wrap">
+                            <strong class="article-nav-caption">上一篇</strong>
+                            <div class="article-nav-title" th:text="${lastArticle.title}"></div>
+                        </a>
+
+
+                        <a th:if="${nextArticle != null}" th:href="'/article/details/'+${nextArticle.articleId}"
+                           id="article-nav-older" class="article-nav-link-wrap">
+                            <strong class="article-nav-caption">下一篇</strong>
+                            <div class="article-nav-title" th:text="${nextArticle.title}"></div>
+                        </a>
+
+                    </nav>
+
+
+                <div id="pagination" hidden="hidden"></div>
+            </article>
+            </div>
+
+            <!--PC和WAP自适应版  畅言社区评论插件  需备案通过才可用 -->
+            <div id="SOHUCS" th:sid="${article.articleId}"></div>
+            <!--<script type="text/javascript">-->
+            <!--(function(){-->
+            <!--var appid = 'appid';-->
+            <!--var conf = 'conf';-->
+            <!--var width = window.innerWidth || document.documentElement.clientWidth;-->
+            <!--if (width < 960) {-->
+            <!--window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');-->
+            <!--} else {-->
+            <!--var loadJs=function(d,a){-->
+            <!--var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;-->
+            <!--var b=document.createElement("script");b.setAttribute("type","text/javascript");-->
+            <!--b.setAttribute("charset","UTF-8");-->
+            <!--b.setAttribute("src",d);-->
+            <!--if(typeof a==="function"){-->
+            <!--if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); -->
+            <!--</script>-->
+
+
+        </section>
+
+        <div id="toTop" class="fa fa-angle-up"></div>
+    </div>
+
+    <footer id="footer" th:replace="blog/part/footer :: footer"></footer>
+
+
+    <script src="/admin/lib/prettify.min.js"></script>
+    <script src="/admin/lib/marked.min.js"></script>
+    <script src="/admin/js/editormd.js"></script>
+    <script src="/admin/lib/flowchart.min.js"></script>
+
+    <script src="/admin/lib/raphael.min.js"></script>
+    <script src="/admin/lib/underscore.min.js"></script>
+    <script src="/admin/lib/sequence-diagram.min.js"></script>
+    <script src="/admin/lib/jquery.flowchart.min.js"></script>
+
+
+    <script src="/js/article-content.js"></script>
+
+    <script src="/js/share.js"></script>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mi.module.blog.mapper.TypeMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.mi.module.blog.entity.Type">
+		<id column="type_id" property="typeId" />
+		<result column="type_name" property="typeName" />
+		<result column="alias_name" property="aliasName" />
+		<result column="sort" property="sort" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+	<select id="load" resultMap="BaseResultMap">
+		select * from blog_type
+		<if test="param != null and param != '' ">
+			WHERE type_name like concat('%',#{param},'%') or alias_name like concat('%',#{param},'%')
+		</if>
+		limit #{pager.start},#{pager.limit}
+	</select>
+
+	<select id="checkExist" resultType="int">
+		select count(type_id) from blog_type  where (type_name=#{typeName} or alias_name = #{aliasName})
+		<if test="typeId != null and typeId != ''">
+			and type_id != #{typeId}
+		</if>
+	</select>
+
+
+	<select id="initTypeList" resultType="com.mi.data.vo.TypeVo">
+	 SELECT
+		  t1.type_id as typeId,
+		  t1.type_name as typeName,
+		  t1.alias_name as aliasName,
+        t1.sort,
+		  t2.articleCount
+		  FROM
+			 blog_type t1
+		 JOIN (
+
+					SELECT
+							DISTINCT
+								bt.type_id,
+								count(ba.article_id) as articleCount
+				FROM
+					blog_article_type bat
+							LEFT JOIN
+									blog_type bt ON  bt.type_id = bat.type_id
+						  LEFT JOIN
+								blog_article ba ON ba.article_id = bat.article_id
+							GROUP BY
+									bt.type_id
+
+			) t2 ON t1.type_id = t2.type_id
+        ORDER BY t1.sort,t2.articleCount desc
+	</select>
+
+
+</mapper>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<body>
+<header id="header" th:fragment="heaher">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">MIYAOW | BLOG</span>
+            </a>
+            <nav id="main-nav">
+                <a class="main-nav-link" href="/">主页</a>
+
+                <!--<a class="main-nav-link" href="/popular">文章热门</a>-->
+
+                <a title="页面High下" style="color:red;margin-left: 15px;" rel="alternate"
+                   class="mw-harlem_shake_slow wobble shake" href="javascript:shake()">
+                    <i class="fa fa-music"></i>
+                    High</a>
+
+
+                <a class="main-nav-link" href="/archive" target="indexFrame">时间归档</a>
+
+                <a class="main-nav-link" href="/about/me" target="indexFrame">关于我</a>
+            </nav>
+
+            <nav id="sub-nav">
+                <div class="profile" id="profile-nav">
+                    <a id="profile-anchor" href="javascript:;">
+                        <img class="avatar" src="/image/avatar.jpg">
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                </div>
+            </nav>
+
+
+            <div id="search-form-wrap">
+
+                <form class="search-form">
+                    <input type="text" class="ins-search-input search-form-input" placeholder="Search"/>
+                    <button type="submit" class="search-form-submit"></button>
+                </form>
+                <div class="ins-search">
+                    <div class="ins-search-mask"></div>
+                    <div class="ins-search-container">
+                        <div class="ins-input-wrapper">
+                            <input type="text" class="ins-search-input" placeholder="输入您过滤的条件 ? "/>
+                            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+                        </div>
+                        <div class="ins-section-wrapper">
+                            <div class="ins-section-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    (function (window) {
+                        var INSIGHT_CONFIG = {
+                            TRANSLATION: {
+                                POSTS: '文章',
+                                PAGES: '页面',
+                                CATEGORIES: '分类',
+                                TAGS: '标签',
+                                UNTITLED: '(未命名)',
+                            },
+                            ROOT_URL: '/',
+                            CONTENT_URL: '/article/content/search',
+                        };
+                        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+                    })(window);
+                </script>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <!--移动端支持-->
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tbody><tr>
+
+                <td><a class="main-nav-link" href="/">主页</a></td>
+                <td><a class="main-nav-link" href="/archive" target="indexFrame">时间归档</a></td>
+
+                <td><a class="main-nav-link" href="/archive" target="indexFrame">时间归档</a></td>
+
+                <!--<td>
+
+                    <div class="search-form">
+                        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+                    </div>
+
+                </td>>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</header>
+</body>
+</html>

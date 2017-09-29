@@ -1,0 +1,21 @@
+server:
+  port: 2000
+spring:
+  application:
+    name: mi-eureka-server
+
+eureka:
+  instance:
+    hostname: mitwo # Windx C:\Windows\System32\drivers\etc 设置
+  client:
+    #若取消集群注册中心配置 registerWithEureka  fetchRegistry  defaultZone 值修改
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://mione:1000
+  server:
+    enable-self-preservation: true
+    renewalPercentThreshold: 0 #设置更新率阈值
+    eviction-interval-timer-in-ms: 20000 #毫秒 有关注册服务调用
+
+
