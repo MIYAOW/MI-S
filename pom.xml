@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>mi</groupId>
+    <artifactId>MI</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.6.RELEASE</version>
+    </parent>
+
+    <properties>
+        <spring-boot-starter-parent.version>1.4.6.RELEASE</spring-boot-starter-parent.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Dalston.RELEASE</spring-cloud.version>
+
+        <lombok.version>1.16.14</lombok.version>
+
+        <spring-boot-starter-swagger.version>1.2.0.RELEASE</spring-boot-starter-swagger.version>
+
+        <poi.version>3.9</poi.version>
+        <poi-ooxml.version>3.15</poi-ooxml.version>
+
+        <spring-boot-admin.version>1.5.0</spring-boot-admin.version>
+
+        <spring-boot-starter-security.version>1.4.6.RELEASE</spring-boot-starter-security.version>
+
+        <velocity.version>1.7</velocity.version>
+        <mybatis-spring-boot-starter.version>1.3.0</mybatis-spring-boot-starter.version>
+        <mybatis-plus.version>2.0.8</mybatis-plus.version>
+        <druid.version>1.0.28</druid.version>
+
+        <thymeleaf.version> 3.0.3.RELEASE </thymeleaf.version>
+        <thymeleaf-layout-dialect.version> 2.1.1 </thymeleaf-layout-dialect.version>
+    </properties>
+
+    <modules>
+        <!-- 指定所需打包模块 启用mvn clean package命令打包 -->
+        <!--<module>mi-common</module>-->
+    </modules>
+
+</project>

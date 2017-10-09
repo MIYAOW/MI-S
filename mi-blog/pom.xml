@@ -44,11 +44,11 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-server-standalone</artifactId>
-			<version>2.41.0</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.seleniumhq.selenium</groupId>-->
+			<!--<artifactId>selenium-server-standalone</artifactId>-->
+			<!--<version>2.41.0</version>-->
+		<!--</dependency>-->
 
 		<!-- 多数据源外引入包 -->
 		<dependency>

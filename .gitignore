@@ -1,6 +1,6 @@
 logs
 # 项目资源
-.idea/
+/.idea/
 *.iml
 
 *application-pro.properties
