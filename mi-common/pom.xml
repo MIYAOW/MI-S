@@ -5,11 +5,11 @@
 
     <groupId>mi.common</groupId>
     <artifactId>mi-common</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>mi-common</name>
-    <description>公共组件模块</description>
+    <description>mi for common</description>
 
     <parent>
         <groupId>mi</groupId>
@@ -18,6 +18,22 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>猫爷-MIYAOW</name>
+            <email>454514080@qq.com</email>
+            <organization>http://www.miterm.com</organization>
+        </developer>
+    </developers>
+
     <dependencies>
 
         <!-- spring-boot-starter-web -->
@@ -25,29 +41,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- TEST -->
-        <!--<dependency>-->
-        <!--<groupId>org.seleniumhq.selenium</groupId>-->
-        <!--<artifactId>selenium-server-standalone</artifactId>-->
-        <!--<version>2.41.0</version>-->
-        <!--</dependency>-->
-        <!-- aop -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-
-        <!-- Swagger -->
-        <!--<dependency>-->
-        <!--<groupId>io.springfox</groupId>-->
-        <!--<artifactId>springfox-swagger2</artifactId>-->
-        <!--<version>${springfox-swagger2.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>io.springfox</groupId>-->
-        <!--<artifactId>springfox-swagger-ui</artifactId>-->
-        <!--<version>${springfox-swagger2.version}</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -73,31 +71,6 @@
             <version>${mybatis-plus.version}</version>
         </dependency>
 
-
-
-
-
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.jolokia/jolokia-core &ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>org.jolokia</groupId>-->
-        <!--<artifactId>jolokia-core</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
-        <!--</dependency>-->
-
-        <!-- redis  redis-data-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-redis</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-data-redis</artifactId>-->
-        <!--</dependency>-->
-
         <!-- POI -->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -109,6 +82,7 @@
             <artifactId>poi-ooxml</artifactId>
             <version>${poi-ooxml.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -117,54 +91,20 @@
 
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
-    <!-- jar -->
     <build>
         <finalName>mi-common</finalName>
         <plugins>
-            <!--<plugin>-->
-                <!--<groupId>org.springframework.boot</groupId>-->
-                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-            <!--</plugin>-->
-
-            <!-- Spring-boot:run 启动打包 -->
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
                 <configuration>
-                    <appendAssemblyId>false</appendAssemblyId>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.mi.MiCommonApplication</mainClass>
-                        </manifest>
-                    </archive>
+                    <skipTests>true</skipTests>
+                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>assembly</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
-
         </plugins>
     </build>
-
 
 </project>

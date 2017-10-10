@@ -22,7 +22,7 @@
 		<dependency>
 			<groupId>mi.common</groupId>
 			<artifactId>mi-common</artifactId>
-			<version>1.0</version>
+			<version>1.1.0.RELEASE</version>
 			<type>jar</type>
 		</dependency>
 
@@ -90,11 +90,11 @@
 		</dependency>
 
 		<!-- 上传图片 -->
-		<dependency>
-			<groupId>com.qiniu</groupId>
-			<artifactId>qiniu-java-sdk</artifactId>
-			<version>[7.2.0, 7.2.99]</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.qiniu</groupId>-->
+			<!--<artifactId>qiniu-java-sdk</artifactId>-->
+			<!--<version>[7.2.0, 7.2.99]</version>-->
+		<!--</dependency>-->
 
 		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 		<dependency>
@@ -125,14 +125,40 @@
 		</plugins>
 		<!-- Solving Resource Packaging Problems -->
 		<resources>
+
 			<resource>
 				<directory>src/main/java</directory>
 				<includes>
-					<include>**/*.properties</include>
 					<include>**/*.xml</include>
 				</includes>
 				<filtering>false</filtering>
 			</resource>
+
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.txt</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+
+			<resource>
+				<directory>src/main/resources/static</directory>
+				<includes>
+					<include>**/**</include>
+				</includes>
+				<targetPath>${basedir}/target/classes/static</targetPath>
+			</resource>
+
+			<resource>
+				<directory>src/main/resources/templates</directory>
+				<includes>
+					<include>**/**</include>
+				</includes>
+				<targetPath>${basedir}/target/classes/templates</targetPath>
+			</resource>
+
 		</resources>
 	</build>
 
