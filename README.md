@@ -62,6 +62,7 @@ Thymeleaf | 模板引擎  | [http://www.thymeleaf.org/](http://www.thymeleaf.org
 Velocity | 模板引擎  | [http://velocity.apache.org/](http://velocity.apache.org/)
 FontAwesome | 图标CSS分类参考 | [http://www.yeahzan.com/fa/facss.html](http://www.yeahzan.com/fa/facss.html)
 H+ | 后台UI模版 | [http://www.zi-han.net/theme/hplus/](http://www.zi-han.net/theme/hplus/)
+SweetAlert | 提示框优化（中文） | [http://mishengqiang.com/sweetalert/](http://mishengqiang.com/sweetalert/)
 
 
 #### 后端技术
@@ -81,6 +82,8 @@ MyBatis-Plus | Mybatis增强工具包  | [http://mp.baomidou.com/#//](http://mp.
 Druid | 数据库连接池 | [https://github.com/alibaba/druid/](https://github.com/alibaba/druid/)
 Log4J | 日志组件 | [https://logging.apache.org/log4j/2.x/](https://logging.apache.org/log4j/2.x/)
 Lombok | 代码消除冗长 | [https://projectlombok.org/](https://projectlombok.org/)
+Jenkins | 持续集成工具 | [https://jenkins.io/index.html/](https://jenkins.io/index.html/)
+
 
 ## 环境搭建
 
